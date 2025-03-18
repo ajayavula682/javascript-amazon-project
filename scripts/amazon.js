@@ -1,3 +1,8 @@
+//syntax for the module to import the variable using the file path
+// to avoid the naming conflicts we can use the alaising 
+import {cart} from '../data/cart.js';
+
+
 let productsHTML ='';
 products.forEach((product) => {
       productsHTML += `
