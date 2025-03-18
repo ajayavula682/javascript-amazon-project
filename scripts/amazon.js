@@ -1,6 +1,7 @@
 //syntax for the module to import the variable using the file path
 // to avoid the naming conflicts we can use the alaising 
 import {cart} from '../data/cart.js';
+import { products } from '../data/products.js';
 
 
 let productsHTML ='';
