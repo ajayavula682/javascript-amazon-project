@@ -1,6 +1,6 @@
 //syntax for the module to import the variable using the file path
 // to avoid the naming conflicts we can use the alaising 
-import {cart} from '../data/cart.js';
+import {cart, addToCart} from '../data/cart.js';
 import { products } from '../data/products.js';
 
 
@@ -60,48 +60,27 @@ products.forEach((product) => {
   `;
  // console.log(html);
 });
-console.log(productsHTML); // select dom element by using query selector
-document.querySelector('.js-products-grid').
-innerHTML = productsHTML;
+//console.log(productsHTML); 
+// select dom element by using query selector
+document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
+ function updateCartQuantity(){
+  let cartQuantity = 0;
+
+  cart.forEach((cartItem) => {
+    cartQuantity += cartItem.quantity;
+  });
+  document.querySelector('.js-cart-quantity').
+  innerHTML = cartQuantity;
+
+ }
 document.querySelectorAll('.js-add-to-cart')
 .forEach(button => {
   button.addEventListener('click', () => {
     //console.log("Added product");
-    const productId=button.dataset //adding the selected item to cart array
-    .productId;
-
-    let matchingItem;
-
-    cart.forEach(
-      (item) => {
-        if(productId ==item.productId){
-          matchingItem =item;
-        }   //this checks weather the selected item existed in the  cart or not
-      });
-
-      if(matchingItem){
-        matchingItem.quantity +=1; // if existed it increment 
-      }
-      else{
-        cart.push({
-          productId: productId,
-          quantity: 1 // if not is just adds to the cart array
-        });
-      }
-
-      let cartQuantity = 0;
-
-      cart.forEach((item) => {
-        cartQuantity += item.quantity;
-      });
-
-      document.querySelector('.js-cart-quantity').
-      innerHTML = cartQuantity;
-
-
-      //console.log(cartQuantity);
-    //console.log(cart);
+    const productId=button.dataset.productId; //adding the selected item to cart array
+    addToCart(productId);
+    updateCartQuantity();
   });
 });
 
