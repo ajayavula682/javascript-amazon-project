@@ -54,7 +54,7 @@ products.forEach((product) => {
   `;
  // console.log(html);
 });
-console.log(productsHTML); // select dom element by using querry selector
+console.log(productsHTML); // select dom element by using query selector
 document.querySelector('.js-products-grid').
 innerHTML = productsHTML;
 
@@ -89,8 +89,13 @@ document.querySelectorAll('.js-add-to-cart')
       cart.forEach((item) => {
         cartQuantity += item.quantity;
       });
-      console.log(cartQuantity);
-    console.log(cart);
+
+      document.querySelector('.js-cart-quantity').
+      innerHTML = cartQuantity;
+
+
+      //console.log(cartQuantity);
+    //console.log(cart);
   });
 });
 
