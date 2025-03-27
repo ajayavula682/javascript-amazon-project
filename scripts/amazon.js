@@ -1,5 +1,7 @@
 //syntax for the module to import the variable using the file path
 // to avoid the naming conflicts we can use the alaising 
+//import {cart as mycart} from '../data/cart.js' --> this is aliasing were we are saving 
+//the cart array as the mycart to avoide the  naming conflict
 import {cart, addToCart} from '../data/cart.js';
 import { products } from '../data/products.js';
 
@@ -74,6 +76,7 @@ document.querySelector('.js-products-grid').innerHTML = productsHTML;
   innerHTML = cartQuantity;
 
  }
+
 document.querySelectorAll('.js-add-to-cart')
 .forEach(button => {
   button.addEventListener('click', () => {
@@ -83,4 +86,6 @@ document.querySelectorAll('.js-add-to-cart')
     updateCartQuantity();
   });
 });
+
+
 
